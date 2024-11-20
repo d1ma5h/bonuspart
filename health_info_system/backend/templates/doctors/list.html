@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Doctors{% endblock %}
+
+{% block content %}
+<h1>Doctors</h1>
+<a href="{{ url_for('create_doctor') }}">Create New Doctor</a>
+<table border="1" cellpadding="5" cellspacing="0">
+    <thead>
+        <tr>
+            <th>Email</th>
+            <th>Degree</th>
+            <th>Salary</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for doctor in doctors %}
+        <tr>
+            <td>{{ doctor.email }}</td>
+            <td>{{ doctor.degree }}</td>
+            <td>{{ doctor.salary }}</td>
+            <td>
+                <a href="{{ url_for('update_doctor', email=doctor.email) }}">Edit</a>
+                <form action="{{ url_for('delete_doctor', email=doctor.email) }}" method="post" style="display:inline;">
+                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this doctor?');">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Create New Doctor</h2>
+<form method="POST">
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" name="email" required>
+    </div>
+    <div class="form-group">
+        <label for="degree">Degree</label>
+        <input type="text" class="form-control" id="degree" name="degree" required>
+    </div>
+    <div class="form-group">
+        <label for="salary">Salary</label>
+        <input type="text" class="form-control" id="salary" name="salary" required>
+    </div>
+    <button type="submit" class="btn btn-success">Create</button>
+    <a href="{{ url_for('manage_doctors') }}" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}
